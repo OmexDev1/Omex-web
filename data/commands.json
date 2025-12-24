@@ -1,0 +1,296 @@
+[
+  {
+    "name": "antinuke",
+    "aliases": ["an"],
+    "description": "Show AntiNuke help and available subcommands.",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": "antinuke"
+  },
+  {
+    "name": "antinuke on",
+    "aliases": ["enable"],
+    "description": "Enable the AntiNuke protection system with the default configuration.",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "Server Owner",
+    "usage": "antinuke on"
+  },
+  {
+    "name": "antinuke off",
+    "aliases": ["disable"],
+    "description": "Disable AntiNuke and reset the configuration to default.",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "Server Owner",
+    "usage": "antinuke off"
+  },
+  {
+    "name": "antinuke logchannel",
+    "aliases": ["logs", "log"],
+    "description": "Set or disable the AntiNuke log channel.",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "[#channel]",
+    "permissions": "Server Owner",
+    "usage": "antinuke logchannel #logs"
+  },
+  {
+    "name": "antinuke admin",
+    "aliases": [],
+    "description": "Toggle a user's AntiNuke Admin status (owner only).",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "<@member>",
+    "permissions": "Server Owner",
+    "usage": "antinuke admin @User"
+  },
+  {
+    "name": "antinuke admins",
+    "aliases": [],
+    "description": "List AntiNuke admins (owner only).",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "Server Owner",
+    "usage": "antinuke admins"
+  },
+  {
+    "name": "antinuke whitelist",
+    "aliases": ["wl", "bypass"],
+    "description": "Add a user to the AntiNuke whitelist (bypass).",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "<@user>",
+    "permissions": "AntiNuke Admin",
+    "usage": "antinuke whitelist @User"
+  },
+  {
+    "name": "antinuke unwhitelist",
+    "aliases": ["uwl"],
+    "description": "Remove a user from the AntiNuke whitelist.",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "<@user>",
+    "permissions": "AntiNuke Admin",
+    "usage": "antinuke unwhitelist @User"
+  },
+  {
+    "name": "antinuke whitelisted",
+    "aliases": [],
+    "description": "View the current AntiNuke whitelisted (bypassed) users.",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "AntiNuke Admin",
+    "usage": "antinuke whitelisted"
+  },
+  {
+    "name": "antinuke configuration",
+    "aliases": ["config", "cfg", "settings"],
+    "description": "View the current AntiNuke configuration and module statuses.",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "AntiNuke Admin",
+    "usage": "antinuke configuration"
+  },
+  {
+    "name": "antinuke channelcreation",
+    "aliases": ["cc"],
+    "description": "Configure AntiNuke protection for mass channel creation.",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "<on|off> --threshold <1-12> --punishment <ban|kick|stripstaff> --command <true|false>",
+    "permissions": "AntiNuke Admin",
+    "usage": "antinuke channelcreation on --threshold 1 --punishment stripstaff --command true"
+  },
+  {
+    "name": "antinuke channeldeletion",
+    "aliases": ["cd"],
+    "description": "Configure AntiNuke protection for mass channel deletion.",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "<on|off> --threshold <1-12> --punishment <ban|kick|stripstaff> --command <true|false>",
+    "permissions": "AntiNuke Admin",
+    "usage": "antinuke channeldeletion on --threshold 1 --punishment stripstaff --command true"
+  },
+  {
+    "name": "antinuke rolecreation",
+    "aliases": ["rc"],
+    "description": "Configure AntiNuke protection for mass role creation.",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "<on|off> --threshold <1-12> --punishment <ban|kick|stripstaff> --command <true|false>",
+    "permissions": "AntiNuke Admin",
+    "usage": "antinuke rolecreation on --threshold 1 --punishment stripstaff --command true"
+  },
+  {
+    "name": "antinuke roledeletion",
+    "aliases": ["rd"],
+    "description": "Configure AntiNuke protection for mass role deletion.",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "<on|off> --threshold <1-12> --punishment <ban|kick|stripstaff> --command <true|false>",
+    "permissions": "AntiNuke Admin",
+    "usage": "antinuke roledeletion on --threshold 1 --punishment stripstaff --command true"
+  },
+  {
+    "name": "antinuke webhooks",
+    "aliases": ["wh", "webhook"],
+    "description": "Configure AntiNuke protection for webhook abuse.",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "<on|off> --threshold <1-12> --punishment <ban|kick|stripstaff> --command <true|false>",
+    "permissions": "AntiNuke Admin",
+    "usage": "antinuke webhooks on --threshold 1 --punishment stripstaff --command true"
+  },
+  {
+    "name": "antinuke ban",
+    "aliases": ["massban", "mb"],
+    "description": "Configure AntiNuke protection for mass bans.",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "<on|off> --threshold <1-12> --punishment <ban|kick|stripstaff> --command <true|false>",
+    "permissions": "AntiNuke Admin",
+    "usage": "antinuke ban on --threshold 1 --punishment stripstaff --command true"
+  },
+  {
+    "name": "antinuke kick",
+    "aliases": ["masskick", "mk"],
+    "description": "Configure AntiNuke protection for mass kicks.",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "<on|off> --threshold <1-12> --punishment <ban|kick|stripstaff> --command <true|false>",
+    "permissions": "AntiNuke Admin",
+    "usage": "antinuke kick on --threshold 1 --punishment stripstaff --command true"
+  },
+  {
+    "name": "antinuke mentions",
+    "aliases": ["massmention", "mm"],
+    "description": "Configure AntiNuke protection for mass mentions (everyone/user/role pings).",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "<on|off> --threshold <1-12> --punishment <ban|kick|stripstaff> --command <true|false>",
+    "permissions": "AntiNuke Admin",
+    "usage": "antinuke mentions on --threshold 1 --punishment stripstaff --command true"
+  },
+  {
+    "name": "antinuke permissions",
+    "aliases": ["perms", "perm"],
+    "description": "Configure AntiNuke protection for dangerous permission escalation (roles/members).",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "<on|off> --threshold <1-12> --punishment <ban|kick|stripstaff> --command <true|false>",
+    "permissions": "AntiNuke Admin",
+    "usage": "antinuke permissions on --threshold 1 --punishment stripstaff --command true"
+  },
+
+  {
+    "name": "afk",
+    "aliases": ["brb"],
+    "description": "Set your AFK status with an optional reason.",
+    "category": "Fun",
+    "prefix": ",",
+    "arguments": "(reason)",
+    "permissions": "None",
+    "usage": "afk eating"
+  },
+  {
+    "name": "forcenick",
+    "aliases": ["fn", "forcename"],
+    "description": "Force a nickname onto a member and store it in the database (remove by omitting nickname).",
+    "category": "Fun",
+    "prefix": ",",
+    "arguments": "<member> (nickname)",
+    "permissions": "Manage Nicknames",
+    "usage": "forcenick @User bestbot"
+  },
+  {
+    "name": "forcednicks",
+    "aliases": ["forcednames", "forcednicknames", "fns"],
+    "description": "View all forced nicknames in the current server.",
+    "category": "Fun",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": "forcednicks"
+  },
+  {
+    "name": "ai",
+    "aliases": ["ask", "gpt"],
+    "description": "Ask a question using the ChatGPT API",
+    "category": "Fun",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "Tier 2",
+    "usage": "ai give me a joke"
+  },
+
+  {
+    "name": "steal",
+    "aliases": ["stealemoji", "stealemote", "emojiadd", "add"],
+    "description": "Steal the provided emoji",
+    "category": "Fun",
+    "prefix": ",",
+    "arguments": "emoji, name",
+    "permissions": "premium guild",
+    "usage": "steal :blobcat: blobcat"
+  },
+
+
+  {
+    "name": "prefix",
+    "aliases": [],
+    "description": "View the current prefix for this server.",
+    "category": "Prefix",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": "prefix"
+  },
+  {
+    "name": "prefix set",
+    "aliases": [],
+    "description": "Set a custom prefix for this server.",
+    "category": "Prefix",
+    "prefix": ",",
+    "arguments": "<prefix>",
+    "permissions": "Manage Server",
+    "usage": "prefix set !"
+  },
+  {
+    "name": "prefix remove",
+    "aliases": ["reset", "delete", "del"],
+    "description": "Remove the custom prefix and reset it to the default.",
+    "category": "Prefix",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "Manage Server",
+    "usage": "prefix remove"
+  },
+  {
+    "name": "prefix self",
+    "aliases": ["me"],
+    "description": "View your personal self prefix.",
+    "category": "Prefix",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": "prefix self"
+  },
+  {
+    "name": "prefix self set",
+    "aliases": [],
+    "description": "Set your personal self prefix (Premium Tier 3 only).",
+    "category": "Prefix",
+    "prefix": ",",
+    "arguments": "<prefix>",
+    "permissions": "Premium Tier 3",
+    "usage": "prefix self set ??"
+  }
+]
