@@ -241,7 +241,134 @@
     "permissions": "premium guild",
     "usage": "steal :blobcat: blobcat"
   },
-
+  {
+    "name": "embed create",
+    "aliases": ["c", "cr", "make"],
+    "description": "Start customization for an embed",
+    "category": "Fun",
+    "prefix": ",",
+    "arguments": "embed code",
+    "usage": "embed create {description: Click below}$v{button: Link && Website && https://example.com}"
+  },
+  {
+    "name": "tiktok info",
+    "aliases": [],
+    "description": "get info on a tiktok",
+    "category": "TikTok",
+    "prefix": ",",
+    "arguments": "url",
+    "usage": "tiktok info {url}"
+  },
+  {
+    "name": "lastfm",
+    "aliases": ["lf", "fm"],
+    "description": "Show LastFM help and available subcommands.",
+    "category": "LastFM",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "Premium Tier 3",
+    "usage": "lastfm"
+  },
+  {
+    "name": "lastfm set",
+    "aliases": ["link", "add", "added"],
+    "description": "Set (link) your Last.fm account username.",
+    "category": "LastFM",
+    "prefix": ",",
+    "arguments": "<username>",
+    "permissions": "Premium Tier 3",
+    "usage": "lastfm set Aj.wtf"
+  },
+  {
+    "name": "lastfm unset",
+    "aliases": ["unlink", "remove"],
+    "description": "Unset (unlink) your Last.fm account.",
+    "category": "LastFM",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "Premium Tier 3",
+    "usage": "lastfm unset"
+  },
+  {
+    "name": "lastfm mode",
+    "aliases": [],
+    "description": "Show LastFM mode help and available subcommands.",
+    "category": "LastFM",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "Premium Tier 3",
+    "usage": "lastfm mode"
+  },
+  {
+    "name": "lastfm mode set",
+    "aliases": [],
+    "description": "Set your Last.fm 'cool mode' template (embed script).",
+    "category": "LastFM",
+    "prefix": ",",
+    "arguments": "<embed code>",
+    "permissions": "Premium Tier 3",
+    "usage": "lastfm mode set {title: Now Playing}{description: {artist.name} — {track.name}}"
+  },
+  {
+    "name": "lastfm mode view",
+    "aliases": [],
+    "description": "View your current Last.fm 'cool mode' template.",
+    "category": "LastFM",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "Premium Tier 3",
+    "usage": "lastfm mode view"
+  },
+  {
+    "name": "lastfm mode clear",
+    "aliases": ["reset", "unset"],
+    "description": "Clear/reset your Last.fm 'cool mode' template.",
+    "category": "LastFM",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "Premium Tier 3",
+    "usage": "lastfm mode clear"
+  },
+  {
+    "name": "lastfm np",
+    "aliases": [],
+    "description": "Show your current/last played track (uses your mode template if set).",
+    "category": "LastFM",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "Premium Tier 3",
+    "usage": "lastfm np"
+  },
+  {
+    "name": "lastfm toptracks",
+    "aliases": ["tt"],
+    "description": "Show your Last.fm top tracks for a time period.",
+    "category": "LastFM",
+    "prefix": ",",
+    "arguments": "[period]",
+    "permissions": "Premium Tier 3",
+    "usage": "lastfm toptracks 7day"
+  },
+  {
+    "name": "lastfm plays",
+    "aliases": ["playcount"],
+    "description": "Show your plays for an artist; if no artist is provided, shows your top 5 most played artists.",
+    "category": "LastFM",
+    "prefix": ",",
+    "arguments": "[artist]",
+    "permissions": "Premium Tier 3",
+    "usage": "lastfm plays Drake"
+  },
+  {
+    "name": "lastfm crowns",
+    "aliases": ["crown", "cr"],
+    "description": "Show Last.fm crowns (top artists list). Defaults to you; can target a member.",
+    "category": "LastFM",
+    "prefix": ",",
+    "arguments": "[@member]",
+    "permissions": "Premium Tier 3",
+    "usage": "lastfm crowns @User"
+  },
 
   {
     "name": "prefix",

@@ -5,7 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { Search, ChevronLeft, ChevronRight, Smile, Zap, Shield, ShieldAlert, Sparkles, Lock } from "lucide-react"
+import { Search, Music, Video,  ChevronLeft, ChevronRight, Smile, Zap, Shield, ShieldAlert, Sparkles, Lock } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import commandsData from "@/data/commands.json"
@@ -23,7 +23,16 @@ interface Command {
 
 const commands: Command[] = commandsData
 
-const categories = ["All", "Moderation", "antinuke", "Fun", "Prefix"] as const
+const categories = [
+  "All",
+  "Moderation",
+  "antinuke",
+  "Fun",
+  "Prefix",
+  "TikTok",
+  "LastFM",
+] as const
+
 type Category = (typeof categories)[number]
 
 const categoryIcons: Record<Category, React.ReactNode> = {
@@ -32,6 +41,8 @@ const categoryIcons: Record<Category, React.ReactNode> = {
   antinuke: <ShieldAlert className="h-4 w-4" />,
   Fun: <Smile className="h-4 w-4" />,
   Prefix: <Zap className="h-4 w-4" />,
+  TikTok: <Video className="h-4 w-4" />,
+  LastFM: <Music className="h-4 w-4" />,
 }
 
 function normalizeAliases(input: unknown): string[] {
