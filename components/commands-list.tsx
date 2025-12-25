@@ -5,7 +5,19 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { Search, Music, Video,  ChevronLeft, ChevronRight, Smile, Zap, Shield, ShieldAlert, Sparkles, Lock } from "lucide-react"
+import {
+  Search,
+  Music,
+  Video,
+  ChevronLeft,
+  ChevronRight,
+  Smile,
+  Zap,
+  Shield,
+  ShieldAlert,
+  Sparkles,
+  Lock,
+} from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import commandsData from "@/data/commands.json"
@@ -23,16 +35,7 @@ interface Command {
 
 const commands: Command[] = commandsData
 
-const categories = [
-  "All",
-  "Moderation",
-  "antinuke",
-  "Fun",
-  "Prefix",
-  "TikTok",
-  "LastFM",
-] as const
-
+const categories = ["All", "Moderation", "antinuke", "Fun", "Prefix", "TikTok", "LastFM"] as const
 type Category = (typeof categories)[number]
 
 const categoryIcons: Record<Category, React.ReactNode> = {
@@ -63,7 +66,6 @@ function isNonePermission(p?: string) {
 }
 
 function PermissionBadge({ value }: { value: string }) {
-  // Only use this component when value is NOT "none"
   return (
     <span className="inline-flex items-center gap-1 rounded-full border border-red-500/25 bg-red-500/10 px-2.5 py-1 text-xs font-medium text-red-200">
       <Lock className="h-3.5 w-3.5" />
@@ -84,28 +86,45 @@ export function CommandsList() {
   const checkScroll = () => {
     const el = scrollContainerRef.current
     if (!el) return
-    const { scrollLeft, scrollWidth, clientWidth } = el
-    setCanScrollLeft(scrollLeft > 0)
-    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10)
+    const maxScrollLeft = Math.max(0, el.scrollWidth - el.clientWidth)
+
+
+    const left = Math.ceil(el.scrollLeft)
+    const epsilon = 1
+
+    setCanScrollLeft(left > epsilon)
+    setCanScrollRight(left < maxScrollLeft - epsilon)
   }
 
   useEffect(() => {
+    const el = scrollContainerRef.current
+    if (!el) return
+
     checkScroll()
-    window.addEventListener("resize", checkScroll)
-    return () => window.removeEventListener("resize", checkScroll)
+
+    const onResize = () => checkScroll()
+    window.addEventListener("resize", onResize)
+
+
+    const raf1 = requestAnimationFrame(checkScroll)
+    const raf2 = requestAnimationFrame(checkScroll)
+
+    return () => {
+      cancelAnimationFrame(raf1)
+      cancelAnimationFrame(raf2)
+      window.removeEventListener("resize", onResize)
+    }
   }, [])
 
   const scroll = (direction: "left" | "right") => {
     const el = scrollContainerRef.current
     if (!el) return
-    const scrollAmount = 200
-    el.scrollBy({
-      left: direction === "left" ? -scrollAmount : scrollAmount,
-      behavior: "smooth",
-    })
+    const amount = 220
+    el.scrollBy({ left: direction === "left" ? -amount : amount, behavior: "smooth" })
+    requestAnimationFrame(() => requestAnimationFrame(checkScroll))
   }
 
-  // Count commands per category (full list, not filtered)
+
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = {}
     for (const c of categories) counts[c] = 0
@@ -135,7 +154,6 @@ export function CommandsList() {
     })
   }, [search, selectedCategory])
 
-  // Name pill (no prefix, no metallic code look)
   const CommandPill = ({ name }: { name: string }) => (
     <span className="inline-flex items-center rounded-md bg-muted/40 px-3 py-1.5 text-sm font-medium text-foreground sm:text-base">
       {name}
@@ -145,21 +163,28 @@ export function CommandsList() {
   return (
     <>
       <div className="mt-8">
-        <div className="mb-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-          <h1 className="text-3xl font-bold tracking-tight transition-all hover:text-primary sm:text-4xl">Commands</h1>
+        <div className="mb-8 grid grid-cols-1 items-center gap-4 sm:grid-cols-3">
+          <div className="hidden sm:block" />
 
-          <div className="group relative w-full transition-all focus-within:scale-105 sm:w-80">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground transition-colors group-focus-within:text-primary" />
+          <div className="relative w-full sm:mx-auto sm:w-[420px]">
+            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
               placeholder="Search commands..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="h-11 rounded-full border-border/40 bg-card/50 pl-10 backdrop-blur transition-all focus:border-primary/50 focus:shadow-lg focus:shadow-primary/10"
+              className="h-11 rounded-full border-border/40 bg-card/50 pl-10 text-center backdrop-blur focus:border-primary/50 focus:shadow-lg focus:shadow-primary/10"
             />
+          </div>
+
+          <div className="flex items-center justify-center sm:justify-end">
+            <span className="text-sm text-muted-foreground">
+              Showing <span className="font-medium text-foreground">{filteredCommands.length}</span> of{" "}
+              <span className="font-medium text-foreground">{commands.length}</span>
+            </span>
           </div>
         </div>
 
-        {/* Categories */}
+
         <div className="relative mb-8">
           <div className="mx-auto max-w-4xl rounded-2xl border border-border/40 bg-card/50 p-3 backdrop-blur">
             <div className="relative flex items-center gap-2">
@@ -167,8 +192,9 @@ export function CommandsList() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="absolute -left-1 z-10 h-8 w-8 shrink-0 rounded-full bg-background/80 shadow-md backdrop-blur transition-all hover:scale-110"
+                  className="absolute left-2 z-10 h-8 w-8 shrink-0 rounded-full bg-background/80 shadow-md backdrop-blur transition-all hover:scale-110"
                   onClick={() => scroll("left")}
+                  aria-label="Scroll categories left"
                 >
                   <ChevronLeft className="h-4 w-4" />
                 </Button>
@@ -177,7 +203,12 @@ export function CommandsList() {
               <div
                 ref={scrollContainerRef}
                 onScroll={checkScroll}
-                className="no-scrollbar flex gap-2 overflow-x-auto px-8 sm:justify-center sm:px-0"
+                className="no-scrollbar flex gap-2 overflow-x-auto px-12 sm:px-10"
+                style={{
+                  scrollBehavior: "smooth",
+                  scrollPaddingLeft: "3rem",
+                  scrollPaddingRight: "3rem",
+                }}
               >
                 {categories.map((category) => {
                   const count = categoryCounts[category] ?? 0
@@ -209,8 +240,9 @@ export function CommandsList() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="absolute -right-1 z-10 h-8 w-8 shrink-0 rounded-full bg-background/80 shadow-md backdrop-blur transition-all hover:scale-110"
+                  className="absolute right-2 z-10 h-8 w-8 shrink-0 rounded-full bg-background/80 shadow-md backdrop-blur transition-all hover:scale-110"
                   onClick={() => scroll("right")}
+                  aria-label="Scroll categories right"
                 >
                   <ChevronRight className="h-4 w-4" />
                 </Button>
@@ -219,7 +251,7 @@ export function CommandsList() {
           </div>
         </div>
 
-        {/* Commands list */}
+
         <div className="grid gap-3 sm:grid-cols-1 md:gap-4">
           {filteredCommands.map((command, index) => {
             const aliases = normalizeAliases(command.aliases)
@@ -243,7 +275,6 @@ export function CommandsList() {
                         {command.description}
                       </CardDescription>
 
-                      {/* ✅ Permission badge moved under description + hidden when "None" */}
                       {showPerms && (
                         <div className="mt-3">
                           <PermissionBadge value={command.permissions} />
@@ -285,7 +316,7 @@ export function CommandsList() {
         )}
       </div>
 
-      {/* Dialog */}
+
       <Dialog open={!!selectedCommand} onOpenChange={() => setSelectedCommand(null)}>
         <DialogContent className="animate-in zoom-in-95 border-border/40 bg-card/95 backdrop-blur-xl duration-300 sm:max-w-md">
           <DialogHeader>
@@ -297,7 +328,6 @@ export function CommandsList() {
 
             <DialogDescription className="mt-3 leading-relaxed">{selectedCommand?.description}</DialogDescription>
 
-            {/* ✅ Permission badge under description + hidden when "None" */}
             {selectedCommand && !isNonePermission(selectedCommand.permissions) && (
               <div className="mt-3">
                 <PermissionBadge value={selectedCommand.permissions} />
