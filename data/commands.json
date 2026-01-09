@@ -1,43 +1,50 @@
 [
   {
-    "name": "antinuke",
-    "aliases": ["an"],
-    "description": "Show AntiNuke help and available subcommands.",
-    "category": "antinuke",
+    "name": "addeconomy",
+    "aliases": [],
+    "description": "Syntax: addeconomy <user> <cash|bank> <amount>",
+    "category": "economy",
     "prefix": ",",
-    "arguments": "none",
+    "arguments": "user, type, amount",
+    "permissions": "Admin",
+    "usage": ",addeconomy @Omex cash 1000"
+  },
+  {
+    "name": "afk",
+    "aliases": [
+      "brb"
+    ],
+    "description": "Set your AFK status with an optional reason.",
+    "category": "afk",
+    "prefix": ",",
+    "arguments": "reason",
     "permissions": "None",
-    "usage": "antinuke"
+    "usage": ",afk eating"
   },
   {
-    "name": "antinuke on",
-    "aliases": ["enable"],
-    "description": "Enable the AntiNuke protection system with the default configuration.",
-    "category": "antinuke",
+    "name": "ai",
+    "aliases": [
+      "ask",
+      "gpt"
+    ],
+    "description": "Ask a question using the ChatGPT API",
+    "category": "fun",
     "prefix": ",",
-    "arguments": "none",
-    "permissions": "Server Owner",
-    "usage": "antinuke on"
+    "arguments": "prompt",
+    "permissions": "None",
+    "usage": ",ai give me a joke"
   },
   {
-    "name": "antinuke off",
-    "aliases": ["disable"],
-    "description": "Disable AntiNuke and reset the configuration to default.",
+    "name": "antinuke",
+    "aliases": [
+      "an"
+    ],
+    "description": "Configure AntiNuke settings.",
     "category": "antinuke",
     "prefix": ",",
-    "arguments": "none",
+    "arguments": "subcommand",
     "permissions": "Server Owner",
-    "usage": "antinuke off"
-  },
-  {
-    "name": "antinuke logchannel",
-    "aliases": ["logs", "log"],
-    "description": "Set or disable the AntiNuke log channel.",
-    "category": "antinuke",
-    "prefix": ",",
-    "arguments": "[#channel]",
-    "permissions": "Server Owner",
-    "usage": "antinuke logchannel #logs"
+    "usage": ",antinuke (subcommand)"
   },
   {
     "name": "antinuke admin",
@@ -45,9 +52,9 @@
     "description": "Toggle a user's AntiNuke Admin status (owner only).",
     "category": "antinuke",
     "prefix": ",",
-    "arguments": "<@member>",
+    "arguments": "server owner",
     "permissions": "Server Owner",
-    "usage": "antinuke admin @User"
+    "usage": ",antinuke admin @Aj"
   },
   {
     "name": "antinuke admins",
@@ -55,369 +62,1749 @@
     "description": "List AntiNuke admins (owner only).",
     "category": "antinuke",
     "prefix": ",",
-    "arguments": "none",
+    "arguments": "server owner",
     "permissions": "Server Owner",
-    "usage": "antinuke admins"
+    "usage": ",antinuke admins"
   },
   {
-    "name": "antinuke whitelist",
-    "aliases": ["wl", "bypass"],
-    "description": "Add a user to the AntiNuke whitelist (bypass).",
+    "name": "antinuke ban",
+    "aliases": [
+      "massban",
+      "mb"
+    ],
+    "description": "Prevents members from being mass banned in your server",
     "category": "antinuke",
     "prefix": ",",
-    "arguments": "<@user>",
-    "permissions": "AntiNuke Admin",
-    "usage": "antinuke whitelist @User"
+    "arguments": "<state> <params>",
+    "permissions": "Server Owner",
+    "usage": ",antinuke ban --threshold 1 --punishment stripstaff"
+  },
+  {
+    "name": "antinuke channelcreation",
+    "aliases": [
+      "cc"
+    ],
+    "description": "Configure the channel creations trigger",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "antinuke admin",
+    "permissions": "Server Owner",
+    "usage": ",antinuke channelcreation on --threshold 1 --punishment stripstaff"
+  },
+  {
+    "name": "antinuke channeldeletion",
+    "aliases": [
+      "cd"
+    ],
+    "description": "Configure the channel deletions trigger",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "antinuke admin",
+    "permissions": "Server Owner",
+    "usage": ",antinuke channeldeletion on --threshold 1 --punishment stripstaff"
+  },
+  {
+    "name": "antinuke configuration",
+    "aliases": [
+      "config",
+      "cfg",
+      "settings"
+    ],
+    "description": "View the current antinuke configuration",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "antinuke admin",
+    "permissions": "Server Owner",
+    "usage": ",antinuke configuration"
+  },
+  {
+    "name": "antinuke kick",
+    "aliases": [
+      "masskick",
+      "mk"
+    ],
+    "description": "Prevents members from being mass kicked in your server",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "<state> <params>",
+    "permissions": "Server Owner",
+    "usage": ",antinuke kick --threshold 1 --punishment stripstaff"
+  },
+  {
+    "name": "antinuke logchannel",
+    "aliases": [
+      "logs",
+      "log"
+    ],
+    "description": "Set the AntiNuke log channel.",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "[channel]",
+    "permissions": "Server Owner",
+    "usage": ",antinuke logchannel #logs"
+  },
+  {
+    "name": "antinuke mentions",
+    "aliases": [
+      "massmention",
+      "mm"
+    ],
+    "description": "Prevents mass pinging",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "<state> <params>",
+    "permissions": "Server Owner",
+    "usage": ",antinuke mentions --threshold 1 --punishment stripstaff"
+  },
+  {
+    "name": "antinuke off",
+    "aliases": [
+      "disable"
+    ],
+    "description": "Disables the antinuke",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "antinuke admin",
+    "permissions": "Server Owner",
+    "usage": ",antinuke disable"
+  },
+  {
+    "name": "antinuke on",
+    "aliases": [
+      "enable"
+    ],
+    "description": "Enable the antinuke protection system",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "antinuke admin",
+    "permissions": "Server Owner",
+    "usage": ",antinuke enable"
+  },
+  {
+    "name": "antinuke permissions",
+    "aliases": [
+      "perms",
+      "perm"
+    ],
+    "description": "Prevent dangerous permissions being given",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "<state> <params>",
+    "permissions": "Server Owner",
+    "usage": ",antinuke permission --threshold 1 --punishment stripstaff"
+  },
+  {
+    "name": "antinuke rolecreation",
+    "aliases": [
+      "rc"
+    ],
+    "description": "Configure the role creation trigger",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "antinuke admin",
+    "permissions": "Server Owner",
+    "usage": ",antinuke rolecreationon --threshold 1 --punishment stripstaff"
+  },
+  {
+    "name": "antinuke roledeletion",
+    "aliases": [
+      "rd"
+    ],
+    "description": "Configure the role deletion trigger",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "antinuke admin",
+    "permissions": "Server Owner",
+    "usage": ",antinuke roledeletion --threshold 1 --punishment stripstaff"
   },
   {
     "name": "antinuke unwhitelist",
-    "aliases": ["uwl"],
-    "description": "Remove a user from the AntiNuke whitelist.",
+    "aliases": [
+      "uwl"
+    ],
+    "description": "Removes a user from the whitelist",
     "category": "antinuke",
     "prefix": ",",
-    "arguments": "<@user>",
-    "permissions": "AntiNuke Admin",
-    "usage": "antinuke unwhitelist @User"
+    "arguments": "antinuke admin",
+    "permissions": "Server Owner",
+    "usage": ",antinuke unwhitelist @aj"
+  },
+  {
+    "name": "antinuke webhooks",
+    "aliases": [
+      "wh",
+      "webhook"
+    ],
+    "description": "Prevents webhooks being spammed in your server",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "<state> [params]",
+    "permissions": "Server Owner",
+    "usage": ",antinuke webhooks --threshold 1 --punishment stripstaff"
+  },
+  {
+    "name": "antinuke whitelist",
+    "aliases": [
+      "wl",
+      "bypass"
+    ],
+    "description": "Exempts a user from antinuke action",
+    "category": "antinuke",
+    "prefix": ",",
+    "arguments": "antinuke admin",
+    "permissions": "Server Owner",
+    "usage": ",antinuke whitelist @aj"
   },
   {
     "name": "antinuke whitelisted",
     "aliases": [],
-    "description": "View the current AntiNuke whitelisted (bypassed) users.",
+    "description": "View the current antinuke whitelisted users",
     "category": "antinuke",
     "prefix": ",",
-    "arguments": "none",
-    "permissions": "AntiNuke Admin",
-    "usage": "antinuke whitelisted"
+    "arguments": "antinuke admin",
+    "permissions": "Server Owner",
+    "usage": ",antinuke whitelisted"
   },
   {
-    "name": "antinuke configuration",
-    "aliases": ["config", "cfg", "settings"],
-    "description": "View the current AntiNuke configuration and module statuses.",
-    "category": "antinuke",
+    "name": "balance",
+    "aliases": [
+      "bal",
+      "money"
+    ],
+    "description": "Syntax: balance (user)",
+    "category": "economy",
     "prefix": ",",
-    "arguments": "none",
-    "permissions": "AntiNuke Admin",
-    "usage": "antinuke configuration"
+    "arguments": "user",
+    "permissions": "",
+    "usage": ",balance @Omex"
   },
   {
-    "name": "antinuke channelcreation",
-    "aliases": ["cc"],
-    "description": "Configure AntiNuke protection for mass channel creation.",
-    "category": "antinuke",
-    "prefix": ",",
-    "arguments": "<on|off> --threshold <1-12> --punishment <ban|kick|stripstaff> --command <true|false>",
-    "permissions": "AntiNuke Admin",
-    "usage": "antinuke channelcreation on --threshold 1 --punishment stripstaff --command true"
-  },
-  {
-    "name": "antinuke channeldeletion",
-    "aliases": ["cd"],
-    "description": "Configure AntiNuke protection for mass channel deletion.",
-    "category": "antinuke",
-    "prefix": ",",
-    "arguments": "<on|off> --threshold <1-12> --punishment <ban|kick|stripstaff> --command <true|false>",
-    "permissions": "AntiNuke Admin",
-    "usage": "antinuke channeldeletion on --threshold 1 --punishment stripstaff --command true"
-  },
-  {
-    "name": "antinuke rolecreation",
-    "aliases": ["rc"],
-    "description": "Configure AntiNuke protection for mass role creation.",
-    "category": "antinuke",
-    "prefix": ",",
-    "arguments": "<on|off> --threshold <1-12> --punishment <ban|kick|stripstaff> --command <true|false>",
-    "permissions": "AntiNuke Admin",
-    "usage": "antinuke rolecreation on --threshold 1 --punishment stripstaff --command true"
-  },
-  {
-    "name": "antinuke roledeletion",
-    "aliases": ["rd"],
-    "description": "Configure AntiNuke protection for mass role deletion.",
-    "category": "antinuke",
-    "prefix": ",",
-    "arguments": "<on|off> --threshold <1-12> --punishment <ban|kick|stripstaff> --command <true|false>",
-    "permissions": "AntiNuke Admin",
-    "usage": "antinuke roledeletion on --threshold 1 --punishment stripstaff --command true"
-  },
-  {
-    "name": "antinuke webhooks",
-    "aliases": ["wh", "webhook"],
-    "description": "Configure AntiNuke protection for webhook abuse.",
-    "category": "antinuke",
-    "prefix": ",",
-    "arguments": "<on|off> --threshold <1-12> --punishment <ban|kick|stripstaff> --command <true|false>",
-    "permissions": "AntiNuke Admin",
-    "usage": "antinuke webhooks on --threshold 1 --punishment stripstaff --command true"
-  },
-  {
-    "name": "antinuke ban",
-    "aliases": ["massban", "mb"],
-    "description": "Configure AntiNuke protection for mass bans.",
-    "category": "antinuke",
-    "prefix": ",",
-    "arguments": "<on|off> --threshold <1-12> --punishment <ban|kick|stripstaff> --command <true|false>",
-    "permissions": "AntiNuke Admin",
-    "usage": "antinuke ban on --threshold 1 --punishment stripstaff --command true"
-  },
-  {
-    "name": "antinuke kick",
-    "aliases": ["masskick", "mk"],
-    "description": "Configure AntiNuke protection for mass kicks.",
-    "category": "antinuke",
-    "prefix": ",",
-    "arguments": "<on|off> --threshold <1-12> --punishment <ban|kick|stripstaff> --command <true|false>",
-    "permissions": "AntiNuke Admin",
-    "usage": "antinuke kick on --threshold 1 --punishment stripstaff --command true"
-  },
-  {
-    "name": "antinuke mentions",
-    "aliases": ["massmention", "mm"],
-    "description": "Configure AntiNuke protection for mass mentions (everyone/user/role pings).",
-    "category": "antinuke",
-    "prefix": ",",
-    "arguments": "<on|off> --threshold <1-12> --punishment <ban|kick|stripstaff> --command <true|false>",
-    "permissions": "AntiNuke Admin",
-    "usage": "antinuke mentions on --threshold 1 --punishment stripstaff --command true"
-  },
-  {
-    "name": "antinuke permissions",
-    "aliases": ["perms", "perm"],
-    "description": "Configure AntiNuke protection for dangerous permission escalation (roles/members).",
-    "category": "antinuke",
-    "prefix": ",",
-    "arguments": "<on|off> --threshold <1-12> --punishment <ban|kick|stripstaff> --command <true|false>",
-    "permissions": "AntiNuke Admin",
-    "usage": "antinuke permissions on --threshold 1 --punishment stripstaff --command true"
-  },
-
-  {
-    "name": "afk",
-    "aliases": ["brb"],
-    "description": "Set your AFK status with an optional reason.",
-    "category": "Fun",
-    "prefix": ",",
-    "arguments": "(reason)",
-    "permissions": "None",
-    "usage": "afk eating"
-  },
-  {
-    "name": "forcenick",
-    "aliases": ["fn", "forcename"],
-    "description": "Force a nickname onto a member and store it in the database (remove by omitting nickname).",
-    "category": "Fun",
-    "prefix": ",",
-    "arguments": "<member> (nickname)",
-    "permissions": "Manage Nicknames",
-    "usage": "forcenick @User bestbot"
-  },
-  {
-    "name": "forcednicks",
-    "aliases": ["forcednames", "forcednicknames", "fns"],
-    "description": "View all forced nicknames in the current server.",
-    "category": "Fun",
+    "name": "botinfo",
+    "aliases": [
+      "bi",
+      "stats"
+    ],
+    "description": "No description provided.",
+    "category": "owner",
     "prefix": ",",
     "arguments": "none",
     "permissions": "None",
-    "usage": "forcednicks"
+    "usage": ",botinfo"
   },
   {
-    "name": "ai",
-    "aliases": ["ask", "gpt"],
-    "description": "Ask a question using the ChatGPT API",
-    "category": "Fun",
+    "name": "clearnames",
+    "aliases": [
+      "clearnamehistory"
+    ],
+    "description": "Clear all your name history data.",
+    "category": "afk",
     "prefix": ",",
     "arguments": "none",
-    "permissions": "Tier 2",
-    "usage": "ai give me a joke"
+    "permissions": "None",
+    "usage": ",clearnames"
   },
-
   {
-    "name": "steal",
-    "aliases": ["stealemoji", "stealemote", "emojiadd", "add"],
-    "description": "Steal the provided emoji",
-    "category": "Fun",
+    "name": "cogs",
+    "aliases": [],
+    "description": "List all active cogs",
+    "category": "owner",
     "prefix": ",",
-    "arguments": "emoji, name",
-    "permissions": "premium guild",
-    "usage": "steal :blobcat: blobcat"
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",cogs"
+  },
+  {
+    "name": "commits",
+    "aliases": [],
+    "description": "Show the most recent GitHub commits.",
+    "category": "owner",
+    "prefix": ",",
+    "arguments": "Latest GitHub commits",
+    "permissions": "None",
+    "usage": ",commits"
+  },
+  {
+    "name": "deposit",
+    "aliases": [
+      "dep"
+    ],
+    "description": "Syntax: deposit <amount|all>",
+    "category": "economy",
+    "prefix": ",",
+    "arguments": "amount",
+    "permissions": "",
+    "usage": ",deposit 100"
+  },
+  {
+    "name": "economydisabled",
+    "aliases": [],
+    "description": "Syntax: economydisabled",
+    "category": "economy",
+    "prefix": ",",
+    "arguments": "admin",
+    "permissions": "Admin",
+    "usage": ",economydisabled"
+  },
+  {
+    "name": "economystatus",
+    "aliases": [],
+    "description": "Syntax: economystatus",
+    "category": "economy",
+    "prefix": ",",
+    "arguments": "economy",
+    "permissions": "",
+    "usage": ",economystatus"
+  },
+  {
+    "name": "embed",
+    "aliases": [],
+    "description": "Embed command group.",
+    "category": "fun",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",embed"
   },
   {
     "name": "embed create",
-    "aliases": ["c", "cr", "make"],
-    "description": "Start customization for an embed",
-    "category": "Fun",
+    "aliases": [
+      "c",
+      "cr",
+      "make"
+    ],
+    "description": "No description provided.",
+    "category": "fun",
     "prefix": ",",
-    "arguments": "embed code",
-    "usage": "embed create {description: Click below}$v{button: Link && Website && https://example.com}"
+    "arguments": "<script>",
+    "permissions": "None",
+    "usage": ",embed create"
   },
   {
-    "name": "tiktok info",
-    "aliases": [],
-    "description": "get info on a tiktok",
-    "category": "TikTok",
+    "name": "embed steal",
+    "aliases": [
+      "copy",
+      "clone"
+    ],
+    "description": "No description provided.",
+    "category": "fun",
     "prefix": ",",
-    "arguments": "url",
-    "usage": "tiktok info {url}"
+    "arguments": "[message_link]",
+    "permissions": "None",
+    "usage": ",embed steal"
+  },
+  {
+    "name": "forcednicks",
+    "aliases": [
+      "forcednames",
+      "forcednicknames",
+      "fns"
+    ],
+    "description": "View all forced nicknames in this server.",
+    "category": "afk",
+    "prefix": ",",
+    "arguments": "None",
+    "permissions": "None",
+    "usage": ",forcednicks"
+  },
+  {
+    "name": "forcenick",
+    "aliases": [
+      "fn",
+      "forcename"
+    ],
+    "description": "Force a nickname onto a member (stored in the database).",
+    "category": "afk",
+    "prefix": ",",
+    "arguments": "member, nickname",
+    "permissions": "Manage Nicknames",
+    "usage": ",forcenick @Omex bestbot"
+  },
+  {
+    "name": "gamble",
+    "aliases": [
+      "bet"
+    ],
+    "description": "Syntax: gamble <amount>",
+    "category": "economy",
+    "prefix": ",",
+    "arguments": "amount",
+    "permissions": "",
+    "usage": ",gamble 100"
+  },
+  {
+    "name": "github",
+    "aliases": [
+      "git"
+    ],
+    "description": "Get information on a GitHub user",
+    "category": "socials",
+    "prefix": ",",
+    "arguments": "<username>",
+    "permissions": "None",
+    "usage": ",github NahRyan-TheDev"
+  },
+  {
+    "name": "heist",
+    "aliases": [],
+    "description": "Syntax: heist",
+    "category": "economy",
+    "prefix": ",",
+    "arguments": "economy",
+    "permissions": "",
+    "usage": ",heist"
+  },
+  {
+    "name": "help",
+    "aliases": [
+      "commands",
+      "h"
+    ],
+    "description": "Syntax: help (command)",
+    "category": "help",
+    "prefix": ",",
+    "arguments": "command",
+    "permissions": "None",
+    "usage": ",help afk"
+  },
+  {
+    "name": "hidecash",
+    "aliases": [
+      "hc"
+    ],
+    "description": "Syntax: hidecash",
+    "category": "economy",
+    "prefix": ",",
+    "arguments": "economy",
+    "permissions": "",
+    "usage": ",hidecash"
+  },
+  {
+    "name": "jishaku",
+    "aliases": [
+      "jsk"
+    ],
+    "description": "The Jishaku debug and diagnostic commands.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",jishaku"
+  },
+  {
+    "name": "jishaku ast",
+    "aliases": [],
+    "description": "Disassemble Python code into AST.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "<argument>",
+    "permissions": "None",
+    "usage": ",jishaku ast"
+  },
+  {
+    "name": "jishaku cancel",
+    "aliases": [],
+    "description": "Cancels a task with the given index.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "<index>",
+    "permissions": "None",
+    "usage": ",jishaku cancel"
+  },
+  {
+    "name": "jishaku cat",
+    "aliases": [],
+    "description": "Read out a file, using syntax highlighting if detected.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "<argument>",
+    "permissions": "None",
+    "usage": ",jishaku cat"
+  },
+  {
+    "name": "jishaku curl",
+    "aliases": [],
+    "description": "Download and display a text file from the internet.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "<url>",
+    "permissions": "None",
+    "usage": ",jishaku curl"
+  },
+  {
+    "name": "jishaku debug",
+    "aliases": [
+      "dbg"
+    ],
+    "description": "Run a command timing execution and catching exceptions.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "<command_string>",
+    "permissions": "None",
+    "usage": ",jishaku debug"
+  },
+  {
+    "name": "jishaku dis",
+    "aliases": [
+      "disassemble"
+    ],
+    "description": "Disassemble Python code into bytecode.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "<argument>",
+    "permissions": "None",
+    "usage": ",jishaku dis"
+  },
+  {
+    "name": "jishaku git",
+    "aliases": [],
+    "description": "Shortcut for 'jsk sh git'. Invokes the system shell.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "<argument>",
+    "permissions": "None",
+    "usage": ",jishaku git"
+  },
+  {
+    "name": "jishaku hide",
+    "aliases": [],
+    "description": "Hides Jishaku from the help command.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",jishaku hide"
+  },
+  {
+    "name": "jishaku invite",
+    "aliases": [],
+    "description": "Retrieve the invite URL for this bot.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "[perms...]",
+    "permissions": "None",
+    "usage": ",jishaku invite"
+  },
+  {
+    "name": "jishaku load",
+    "aliases": [
+      "reload"
+    ],
+    "description": "Loads or reloads the given extension names.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "[extensions...]",
+    "permissions": "None",
+    "usage": ",jishaku load"
+  },
+  {
+    "name": "jishaku node",
+    "aliases": [],
+    "description": "Shortcut for scaffolding and executing 'npm run'. Only exists if the executables are detected.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "<argument>",
+    "permissions": "None",
+    "usage": ",jishaku node"
+  },
+  {
+    "name": "jishaku override",
+    "aliases": [
+      "execute",
+      "exec",
+      "override!",
+      "execute!",
+      "exec!"
+    ],
+    "description": "Run a command with a different user, channel, or thread, optionally bypassing checks and cooldowns.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "[overrides]... <command_string>",
+    "permissions": "None",
+    "usage": ",jishaku override"
+  },
+  {
+    "name": "jishaku permtrace",
+    "aliases": [],
+    "description": "Calculates the source of granted or rejected permissions.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "<channel> [targets...]",
+    "permissions": "None",
+    "usage": ",jishaku permtrace"
+  },
+  {
+    "name": "jishaku pip",
+    "aliases": [],
+    "description": "Shortcut for 'jsk sh pip'. Invokes the system shell.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "<argument>",
+    "permissions": "None",
+    "usage": ",jishaku pip"
+  },
+  {
+    "name": "jishaku py",
+    "aliases": [
+      "python"
+    ],
+    "description": "Direct evaluation of Python code.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "<argument>",
+    "permissions": "None",
+    "usage": ",jishaku py"
+  },
+  {
+    "name": "jishaku py_inspect",
+    "aliases": [
+      "pyi",
+      "python_inspect",
+      "pythoninspect"
+    ],
+    "description": "Evaluation of Python code with inspect information.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "<argument>",
+    "permissions": "None",
+    "usage": ",jishaku py_inspect"
+  },
+  {
+    "name": "jishaku repeat",
+    "aliases": [],
+    "description": "Runs a command multiple times in a row.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "<times> <command_string>",
+    "permissions": "None",
+    "usage": ",jishaku repeat"
+  },
+  {
+    "name": "jishaku retain",
+    "aliases": [],
+    "description": "Turn variable retention for REPL on or off.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "[toggle]",
+    "permissions": "None",
+    "usage": ",jishaku retain"
+  },
+  {
+    "name": "jishaku rtt",
+    "aliases": [
+      "ping"
+    ],
+    "description": "Calculates Round-Trip Time to the API.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",jishaku rtt"
+  },
+  {
+    "name": "jishaku shell",
+    "aliases": [
+      "bash",
+      "sh",
+      "powershell",
+      "ps1",
+      "ps",
+      "cmd",
+      "terminal"
+    ],
+    "description": "Executes statements in the system shell.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "<argument>",
+    "permissions": "None",
+    "usage": ",jishaku shell"
+  },
+  {
+    "name": "jishaku show",
+    "aliases": [],
+    "description": "Shows Jishaku in the help command.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",jishaku show"
+  },
+  {
+    "name": "jishaku shutdown",
+    "aliases": [
+      "logout"
+    ],
+    "description": "Logs this bot out.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",jishaku shutdown"
+  },
+  {
+    "name": "jishaku source",
+    "aliases": [
+      "src"
+    ],
+    "description": "Displays the source code for a command.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "<command_name>",
+    "permissions": "None",
+    "usage": ",jishaku source"
+  },
+  {
+    "name": "jishaku specialist",
+    "aliases": [],
+    "description": "Direct evaluation of Python code.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "<argument>",
+    "permissions": "None",
+    "usage": ",jishaku specialist"
+  },
+  {
+    "name": "jishaku sql",
+    "aliases": [],
+    "description": "Parent for SQL adapter related commands",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",jishaku sql"
+  },
+  {
+    "name": "jishaku sql execute",
+    "aliases": [],
+    "description": "Executes a statement against the SQL database.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "<query>",
+    "permissions": "None",
+    "usage": ",jishaku sql execute"
+  },
+  {
+    "name": "jishaku sql fetch",
+    "aliases": [],
+    "description": "Fetch multiple rows from the SQL database.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "<query>",
+    "permissions": "None",
+    "usage": ",jishaku sql fetch"
+  },
+  {
+    "name": "jishaku sql fetchrow",
+    "aliases": [
+      "fetchone"
+    ],
+    "description": "Fetch a single row from the SQL database.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "<query>",
+    "permissions": "None",
+    "usage": ",jishaku sql fetchrow"
+  },
+  {
+    "name": "jishaku sql schema",
+    "aliases": [],
+    "description": "Queries for the current schema and shows located table structures.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "[query]",
+    "permissions": "None",
+    "usage": ",jishaku sql schema"
+  },
+  {
+    "name": "jishaku sql select",
+    "aliases": [],
+    "description": "Shortcut for 'jsk sql fetch select'.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "<query>",
+    "permissions": "None",
+    "usage": ",jishaku sql select"
+  },
+  {
+    "name": "jishaku sync",
+    "aliases": [],
+    "description": "Sync global or guild application commands to Discord.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "[targets...]",
+    "permissions": "None",
+    "usage": ",jishaku sync"
+  },
+  {
+    "name": "jishaku tasks",
+    "aliases": [],
+    "description": "Shows the currently running jishaku tasks.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",jishaku tasks"
+  },
+  {
+    "name": "jishaku unload",
+    "aliases": [],
+    "description": "Unloads the given extension names.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "[extensions...]",
+    "permissions": "None",
+    "usage": ",jishaku unload"
+  },
+  {
+    "name": "jishaku voice",
+    "aliases": [
+      "vc"
+    ],
+    "description": "Voice-related commands.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",jishaku voice"
+  },
+  {
+    "name": "jishaku voice disconnect",
+    "aliases": [
+      "dc"
+    ],
+    "description": "Disconnects from the voice channel in this guild, if there is one.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",jishaku voice disconnect"
+  },
+  {
+    "name": "jishaku voice join",
+    "aliases": [
+      "connect"
+    ],
+    "description": "Joins a voice channel, or moves to it if already connected.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "[destination]",
+    "permissions": "None",
+    "usage": ",jishaku voice join"
+  },
+  {
+    "name": "jishaku voice pause",
+    "aliases": [],
+    "description": "Pauses a running audio source, if there is one.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",jishaku voice pause"
+  },
+  {
+    "name": "jishaku voice play",
+    "aliases": [
+      "play_local"
+    ],
+    "description": "Plays audio direct from a URI.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "<uri>",
+    "permissions": "None",
+    "usage": ",jishaku voice play"
+  },
+  {
+    "name": "jishaku voice resume",
+    "aliases": [],
+    "description": "Resumes a running audio source, if there is one.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",jishaku voice resume"
+  },
+  {
+    "name": "jishaku voice stop",
+    "aliases": [],
+    "description": "Stops running an audio source, if there is one.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",jishaku voice stop"
+  },
+  {
+    "name": "jishaku voice volume",
+    "aliases": [],
+    "description": "Adjusts the volume of an audio source if it is supported.",
+    "category": "jishaku",
+    "prefix": ",",
+    "arguments": "<percentage>",
+    "permissions": "None",
+    "usage": ",jishaku voice volume"
   },
   {
     "name": "lastfm",
-    "aliases": ["lf", "fm"],
-    "description": "Show LastFM help and available subcommands.",
-    "category": "LastFM",
+    "aliases": [
+      "lf",
+      "fm"
+    ],
+    "description": "No description provided.",
+    "category": "lastfm",
     "prefix": ",",
     "arguments": "none",
-    "permissions": "Premium Tier 3",
-    "usage": "lastfm"
+    "permissions": "None",
+    "usage": ",lastfm"
   },
   {
-    "name": "lastfm set",
-    "aliases": ["link", "add", "added"],
-    "description": "Set (link) your Last.fm account username.",
-    "category": "LastFM",
+    "name": "lastfm crowns",
+    "aliases": [
+      "crown",
+      "cr"
+    ],
+    "description": "Show Last.fm crowns (defaults to you).",
+    "category": "lastfm",
     "prefix": ",",
-    "arguments": "<username>",
-    "permissions": "Premium Tier 3",
-    "usage": "lastfm set Aj.wtf"
-  },
-  {
-    "name": "lastfm unset",
-    "aliases": ["unlink", "remove"],
-    "description": "Unset (unlink) your Last.fm account.",
-    "category": "LastFM",
-    "prefix": ",",
-    "arguments": "none",
-    "permissions": "Premium Tier 3",
-    "usage": "lastfm unset"
+    "arguments": "[member]",
+    "permissions": "None",
+    "usage": ",lastfm crowns"
   },
   {
     "name": "lastfm mode",
     "aliases": [],
-    "description": "Show LastFM mode help and available subcommands.",
-    "category": "LastFM",
+    "description": "No description provided.",
+    "category": "lastfm",
     "prefix": ",",
     "arguments": "none",
-    "permissions": "Premium Tier 3",
-    "usage": "lastfm mode"
+    "permissions": "None",
+    "usage": ",lastfm mode"
+  },
+  {
+    "name": "lastfm mode clear",
+    "aliases": [
+      "reset",
+      "unset"
+    ],
+    "description": "No description provided.",
+    "category": "lastfm",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",lastfm mode clear"
   },
   {
     "name": "lastfm mode set",
     "aliases": [],
-    "description": "Set your Last.fm 'cool mode' template (embed script).",
-    "category": "LastFM",
+    "description": "No description provided.",
+    "category": "lastfm",
     "prefix": ",",
-    "arguments": "<embed code>",
-    "permissions": "Premium Tier 3",
-    "usage": "lastfm mode set {title: Now Playing}{description: {artist.name} — {track.name}}"
+    "arguments": "<template>",
+    "permissions": "None",
+    "usage": ",lastfm mode set"
   },
   {
     "name": "lastfm mode view",
     "aliases": [],
-    "description": "View your current Last.fm 'cool mode' template.",
-    "category": "LastFM",
+    "description": "No description provided.",
+    "category": "lastfm",
     "prefix": ",",
     "arguments": "none",
-    "permissions": "Premium Tier 3",
-    "usage": "lastfm mode view"
-  },
-  {
-    "name": "lastfm mode clear",
-    "aliases": ["reset", "unset"],
-    "description": "Clear/reset your Last.fm 'cool mode' template.",
-    "category": "LastFM",
-    "prefix": ",",
-    "arguments": "none",
-    "permissions": "Premium Tier 3",
-    "usage": "lastfm mode clear"
+    "permissions": "None",
+    "usage": ",lastfm mode view"
   },
   {
     "name": "lastfm np",
     "aliases": [],
-    "description": "Show your current/last played track (uses your mode template if set).",
-    "category": "LastFM",
+    "description": "Show your current or last played track on Last.fm",
+    "category": "lastfm",
     "prefix": ",",
     "arguments": "none",
-    "permissions": "Premium Tier 3",
-    "usage": "lastfm np"
-  },
-  {
-    "name": "lastfm toptracks",
-    "aliases": ["tt"],
-    "description": "Show your Last.fm top tracks for a time period.",
-    "category": "LastFM",
-    "prefix": ",",
-    "arguments": "[period]",
-    "permissions": "Premium Tier 3",
-    "usage": "lastfm toptracks 7day"
+    "permissions": "None",
+    "usage": ",lastfm np"
   },
   {
     "name": "lastfm plays",
-    "aliases": ["playcount"],
-    "description": "Show your plays for an artist; if no artist is provided, shows your top 5 most played artists.",
-    "category": "LastFM",
+    "aliases": [
+      "playcount"
+    ],
+    "description": "No description provided.",
+    "category": "lastfm",
     "prefix": ",",
     "arguments": "[artist]",
-    "permissions": "Premium Tier 3",
-    "usage": "lastfm plays Drake"
+    "permissions": "None",
+    "usage": ",lastfm plays"
   },
   {
-    "name": "lastfm crowns",
-    "aliases": ["crown", "cr"],
-    "description": "Show Last.fm crowns (top artists list). Defaults to you; can target a member.",
-    "category": "LastFM",
+    "name": "lastfm set",
+    "aliases": [
+      "link",
+      "add",
+      "added"
+    ],
+    "description": "Set your Last.fm account",
+    "category": "lastfm",
     "prefix": ",",
-    "arguments": "[@member]",
-    "permissions": "Premium Tier 3",
-    "usage": "lastfm crowns @User"
+    "arguments": "<username>",
+    "permissions": "None",
+    "usage": ",lastfm set Aj.wtf"
   },
-
+  {
+    "name": "lastfm toptracks",
+    "aliases": [
+      "tt"
+    ],
+    "description": "git your Last.fm toptracks",
+    "category": "lastfm",
+    "prefix": ",",
+    "arguments": "[period=7day]",
+    "permissions": "None",
+    "usage": ",lastfm toptracks 7day"
+  },
+  {
+    "name": "lastfm unset",
+    "aliases": [
+      "unlink",
+      "remove"
+    ],
+    "description": "unset your Last.fm account",
+    "category": "lastfm",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",lastfm unset Aj.wtf"
+  },
+  {
+    "name": "leaderboard",
+    "aliases": [
+      "lb",
+      "rich"
+    ],
+    "description": "Syntax: leaderboard",
+    "category": "economy",
+    "prefix": ",",
+    "arguments": "economy",
+    "permissions": "",
+    "usage": ",lb"
+  },
+  {
+    "name": "lines",
+    "aliases": [
+      "linesofcode"
+    ],
+    "description": "No description provided.",
+    "category": "owner",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",lines"
+  },
+  {
+    "name": "logs",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "logs",
+    "prefix": ",",
+    "arguments": "[log_type]",
+    "permissions": "None",
+    "usage": ",logs"
+  },
+  {
+    "name": "logs ignore",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "logs",
+    "prefix": ",",
+    "arguments": "<target>",
+    "permissions": "None",
+    "usage": ",logs ignore"
+  },
+  {
+    "name": "logs ignored",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "logs",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",logs ignored"
+  },
+  {
+    "name": "logs remove",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "logs",
+    "prefix": ",",
+    "arguments": "[log_type]",
+    "permissions": "None",
+    "usage": ",logs remove"
+  },
+  {
+    "name": "logs set",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "logs",
+    "prefix": ",",
+    "arguments": "[channel] [log_types]",
+    "permissions": "None",
+    "usage": ",logs set"
+  },
+  {
+    "name": "logs unignore",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "logs",
+    "prefix": ",",
+    "arguments": "<target>",
+    "permissions": "None",
+    "usage": ",logs unignore"
+  },
+  {
+    "name": "mp",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "premium",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",mp"
+  },
+  {
+    "name": "namehistory",
+    "aliases": [
+      "nh"
+    ],
+    "description": "View your name change history.",
+    "category": "afk",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",namehistory"
+  },
+  {
+    "name": "omex",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "owner",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",omex"
+  },
+  {
+    "name": "omex findbl",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "owner",
+    "prefix": ",",
+    "arguments": "[member]",
+    "permissions": "None",
+    "usage": ",omex findbl"
+  },
+  {
+    "name": "omex pull",
+    "aliases": [
+      "github",
+      "pullrepo"
+    ],
+    "description": "No description provided.",
+    "category": "owner",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",omex pull"
+  },
+  {
+    "name": "omex userbl",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "owner",
+    "prefix": ",",
+    "arguments": "<member> [reason=No reason provided]",
+    "permissions": "None",
+    "usage": ",omex userbl"
+  },
+  {
+    "name": "omex userubl",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "owner",
+    "prefix": ",",
+    "arguments": "<member>",
+    "permissions": "None",
+    "usage": ",omex userubl"
+  },
+  {
+    "name": "ping",
+    "aliases": [],
+    "description": "Syntax: ping",
+    "category": "fun",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",ping"
+  },
   {
     "name": "prefix",
     "aliases": [],
     "description": "View the current prefix for this server.",
-    "category": "Prefix",
+    "category": "afk",
     "prefix": ",",
     "arguments": "none",
     "permissions": "None",
-    "usage": "prefix"
-  },
-  {
-    "name": "prefix set",
-    "aliases": [],
-    "description": "Set a custom prefix for this server.",
-    "category": "Prefix",
-    "prefix": ",",
-    "arguments": "<prefix>",
-    "permissions": "Manage Server",
-    "usage": "prefix set !"
+    "usage": ",prefix"
   },
   {
     "name": "prefix remove",
-    "aliases": ["reset", "delete", "del"],
-    "description": "Remove the custom prefix and reset it to the default.",
-    "category": "Prefix",
-    "prefix": ",",
-    "arguments": "none",
-    "permissions": "Manage Server",
-    "usage": "prefix remove"
-  },
-  {
-    "name": "prefix self",
-    "aliases": ["me"],
-    "description": "View your personal self prefix.",
-    "category": "Prefix",
+    "aliases": [
+      "reset",
+      "delete",
+      "del"
+    ],
+    "description": "Remove the custom prefix for this server (back to default).",
+    "category": "afk",
     "prefix": ",",
     "arguments": "none",
     "permissions": "None",
-    "usage": "prefix self"
+    "usage": ",prefix remove"
+  },
+  {
+    "name": "prefix self",
+    "aliases": [
+      "me"
+    ],
+    "description": "View your current self prefix.",
+    "category": "afk",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",prefix self"
   },
   {
     "name": "prefix self set",
     "aliases": [],
-    "description": "Set your personal self prefix (Premium Tier 3 only).",
-    "category": "Prefix",
+    "description": "Set your personal self prefix.",
+    "category": "afk",
     "prefix": ",",
-    "arguments": "<prefix>",
-    "permissions": "Premium Tier 3",
-    "usage": "prefix self set ??"
+    "arguments": "prefix",
+    "permissions": "None",
+    "usage": ",prefix self set ??"
+  },
+  {
+    "name": "prefix set",
+    "aliases": [],
+    "description": "Set the prefix for this server.",
+    "category": "afk",
+    "prefix": ",",
+    "arguments": "prefix",
+    "permissions": "None",
+    "usage": ",prefix set !"
+  },
+  {
+    "name": "premium",
+    "aliases": [
+      "prem"
+    ],
+    "description": "No description provided.",
+    "category": "premium",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",premium"
+  },
+  {
+    "name": "premium add",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "premium",
+    "prefix": ",",
+    "arguments": "<guild_id>",
+    "permissions": "None",
+    "usage": ",premium add"
+  },
+  {
+    "name": "premium list",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "premium",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",premium list"
+  },
+  {
+    "name": "premium manage",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "premium",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",premium manage"
+  },
+  {
+    "name": "premium manage add",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "premium",
+    "prefix": ",",
+    "arguments": "<tier> <user>",
+    "permissions": "None",
+    "usage": ",premium manage add"
+  },
+  {
+    "name": "premium manage check",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "premium",
+    "prefix": ",",
+    "arguments": "<user>",
+    "permissions": "None",
+    "usage": ",premium manage check"
+  },
+  {
+    "name": "premium manage guildlist",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "premium",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",premium manage guildlist"
+  },
+  {
+    "name": "premium manage remove",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "premium",
+    "prefix": ",",
+    "arguments": "<user>",
+    "permissions": "None",
+    "usage": ",premium manage remove"
+  },
+  {
+    "name": "premium manage userlist",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "premium",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",premium manage userlist"
+  },
+  {
+    "name": "premium transfer",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "premium",
+    "prefix": ",",
+    "arguments": "<from_guild_id> <to_guild_id>",
+    "permissions": "None",
+    "usage": ",premium transfer"
+  },
+  {
+    "name": "register",
+    "aliases": [
+      "reg"
+    ],
+    "description": "Syntax: register",
+    "category": "economy",
+    "prefix": ",",
+    "arguments": "economy",
+    "permissions": "",
+    "usage": ",register"
+  },
+  {
+    "name": "reloadhelpers",
+    "aliases": [
+      "rl2"
+    ],
+    "description": "No description provided.",
+    "category": "owner",
+    "prefix": ",",
+    "arguments": "<name>",
+    "permissions": "None",
+    "usage": ",reloadhelpers"
+  },
+  {
+    "name": "reloadutils",
+    "aliases": [
+      "rl"
+    ],
+    "description": "Reload a core utility file",
+    "category": "owner",
+    "prefix": ",",
+    "arguments": "<name>",
+    "permissions": "None",
+    "usage": ",reloadutils"
+  },
+  {
+    "name": "rl3",
+    "aliases": [
+      "rlm"
+    ],
+    "description": "Syntax: rl3 (module|all)",
+    "category": "owner",
+    "prefix": ",",
+    "arguments": "module",
+    "permissions": "Bot Developer",
+    "usage": ",rl3 all"
+  },
+  {
+    "name": "rob",
+    "aliases": [],
+    "description": "Syntax: rob <user>",
+    "category": "economy",
+    "prefix": ",",
+    "arguments": "user",
+    "permissions": "",
+    "usage": ",rob @Omex"
+  },
+  {
+    "name": "roblox",
+    "aliases": [
+      "rbx"
+    ],
+    "description": "Look up a Roblox user",
+    "category": "socials",
+    "prefix": ",",
+    "arguments": "<username>",
+    "permissions": "None",
+    "usage": ",github NahRyan-TheDev"
+  },
+  {
+    "name": "role",
+    "aliases": [
+      "r"
+    ],
+    "description": "Add or remove a role from a user",
+    "category": "role",
+    "prefix": ",",
+    "arguments": "user role",
+    "permissions": "Manage Roles",
+    "usage": ",r @flor @python"
+  },
+  {
+    "name": "role all",
+    "aliases": [
+      "everyone",
+      "mass"
+    ],
+    "description": "Add a role to all members in the server.",
+    "category": "role",
+    "prefix": ",",
+    "arguments": "role",
+    "permissions": "Manage Roles",
+    "usage": ",role all @Members"
+  },
+  {
+    "name": "role color",
+    "aliases": [
+      "colour"
+    ],
+    "description": "Change the colour of an existing role",
+    "category": "role",
+    "prefix": ",",
+    "arguments": "role color",
+    "permissions": "Manage Roles",
+    "usage": ",role colour @python red"
+  },
+  {
+    "name": "role create",
+    "aliases": [
+      "cr",
+      "make",
+      "new"
+    ],
+    "description": "Create a role",
+    "category": "role",
+    "prefix": ",",
+    "arguments": "name [color]",
+    "permissions": "Manage Roles",
+    "usage": ",role Create python blue"
+  },
+  {
+    "name": "role delete",
+    "aliases": [
+      "del"
+    ],
+    "description": "delete a role",
+    "category": "role",
+    "prefix": ",",
+    "arguments": "role",
+    "permissions": "Manage Roles",
+    "usage": ",role delete @python"
+  },
+  {
+    "name": "role display",
+    "aliases": [
+      "displayrole",
+      "hoist"
+    ],
+    "description": "Toggle whether a role is displayed separately (hoisted).",
+    "category": "role",
+    "prefix": ",",
+    "arguments": "role",
+    "permissions": "Manage Roles",
+    "usage": ",role display @Members"
+  },
+  {
+    "name": "role icon",
+    "aliases": [
+      "pfp",
+      "image"
+    ],
+    "description": "Change the icon of a specified role",
+    "category": "role",
+    "prefix": ",",
+    "arguments": "role, url",
+    "permissions": "Manage Roles",
+    "usage": ",role icon @Role https://kyos.bot/icon.png"
+  },
+  {
+    "name": "role mentionable",
+    "aliases": [
+      "mention",
+      "pingable"
+    ],
+    "description": "Toggle whether a role can be mentioned.",
+    "category": "role",
+    "prefix": ",",
+    "arguments": "role",
+    "permissions": "Manage Roles",
+    "usage": ",role mentionable @Announcements"
+  },
+  {
+    "name": "settings",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "settings",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",settings"
+  },
+  {
+    "name": "settings logs",
+    "aliases": [],
+    "description": "Show where different log types are sent.",
+    "category": "settings",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",settings logs"
+  },
+  {
+    "name": "staffcmds",
+    "aliases": [
+      "devcmds",
+      "cmdperms"
+    ],
+    "description": "List all staff and developer commands you have access to",
+    "category": "owner",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",staffcmds"
+  },
+  {
+    "name": "statusapi",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "owner",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",statusapi"
+  },
+  {
+    "name": "statusapi restart",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "owner",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",statusapi restart"
+  },
+  {
+    "name": "statusapi start",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "owner",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",statusapi start"
+  },
+  {
+    "name": "statusapi stop",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "owner",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",statusapi stop"
+  },
+  {
+    "name": "steal",
+    "aliases": [
+      "stealemoji",
+      "stealemote",
+      "emojiadd",
+      "add"
+    ],
+    "description": "Steal the provided emoji",
+    "category": "fun",
+    "prefix": ",",
+    "arguments": "emoji, name",
+    "permissions": "Manage Emojis",
+    "usage": ",steal :blobcat: blobcat"
+  },
+  {
+    "name": "steam",
+    "aliases": [
+      "slookup",
+      "stm"
+    ],
+    "description": "Look up a Steam profile",
+    "category": "socials",
+    "prefix": ",",
+    "arguments": "<username>",
+    "permissions": "None",
+    "usage": ",steam"
+  },
+  {
+    "name": "sync",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "owner",
+    "prefix": ",",
+    "arguments": "[scope]",
+    "permissions": "None",
+    "usage": ",sync"
+  },
+  {
+    "name": "tiktok",
+    "aliases": [
+      "tt"
+    ],
+    "description": "No description provided.",
+    "category": "fun",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",tiktok"
+  },
+  {
+    "name": "tiktok info",
+    "aliases": [],
+    "description": "Get information about a TikTok video (downloads mp4).",
+    "category": "fun",
+    "prefix": ",",
+    "arguments": "<video_url>",
+    "permissions": "None",
+    "usage": ",tiktok info https://www.tiktok.com/@user/video/123"
+  },
+  {
+    "name": "wanted",
+    "aliases": [],
+    "description": "Syntax: wanted",
+    "category": "economy",
+    "prefix": ",",
+    "arguments": "economy",
+    "permissions": "",
+    "usage": ",wanted"
+  },
+  {
+    "name": "webhook",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "webhook",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",webhook"
+  },
+  {
+    "name": "webhook create",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "webhook",
+    "prefix": ",",
+    "arguments": "[channel]",
+    "permissions": "None",
+    "usage": ",webhook create"
+  },
+  {
+    "name": "webhook delete",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "webhook",
+    "prefix": ",",
+    "arguments": "[channel]",
+    "permissions": "None",
+    "usage": ",webhook delete"
+  },
+  {
+    "name": "webhook edit",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "webhook",
+    "prefix": ",",
+    "arguments": "<name> [channel]",
+    "permissions": "None",
+    "usage": ",webhook edit"
+  },
+  {
+    "name": "webhook forward",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "webhook",
+    "prefix": ",",
+    "arguments": "<target_channel> <message_id>",
+    "permissions": "None",
+    "usage": ",webhook forward"
+  },
+  {
+    "name": "webhook list",
+    "aliases": [],
+    "description": "No description provided.",
+    "category": "webhook",
+    "prefix": ",",
+    "arguments": "none",
+    "permissions": "None",
+    "usage": ",webhook list"
+  },
+  {
+    "name": "webhook send",
+    "aliases": [],
+    "description": "Usage:",
+    "category": "webhook",
+    "prefix": ",",
+    "arguments": "[channel] <message>",
+    "permissions": "None",
+    "usage": ",webhook send"
+  },
+  {
+    "name": "withdraw",
+    "aliases": [
+      "with"
+    ],
+    "description": "Syntax: withdraw <amount|all>",
+    "category": "economy",
+    "prefix": ",",
+    "arguments": "amount",
+    "permissions": "",
+    "usage": ",withdraw 500"
+  },
+  {
+    "name": "work",
+    "aliases": [],
+    "description": "Syntax: work",
+    "category": "economy",
+    "prefix": ",",
+    "arguments": "economy",
+    "permissions": "",
+    "usage": ",work"
   }
 ]

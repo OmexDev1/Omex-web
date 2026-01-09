@@ -7,15 +7,8 @@ import { Badge } from "@/components/ui/badge"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import {
   Search,
-  Music,
-  Video,
   ChevronLeft,
   ChevronRight,
-  Smile,
-  Zap,
-  Shield,
-  ShieldAlert,
-  Sparkles,
   Lock,
 } from "lucide-react"
 import { Input } from "@/components/ui/input"
@@ -34,19 +27,6 @@ interface Command {
 }
 
 const commands: Command[] = commandsData
-
-const categories = ["All", "Moderation", "antinuke", "Fun", "Prefix", "TikTok", "LastFM"] as const
-type Category = (typeof categories)[number]
-
-const categoryIcons: Record<Category, React.ReactNode> = {
-  All: <Sparkles className="h-4 w-4" />,
-  Moderation: <Shield className="h-4 w-4" />,
-  antinuke: <ShieldAlert className="h-4 w-4" />,
-  Fun: <Smile className="h-4 w-4" />,
-  Prefix: <Zap className="h-4 w-4" />,
-  TikTok: <Video className="h-4 w-4" />,
-  LastFM: <Music className="h-4 w-4" />,
-}
 
 function normalizeAliases(input: unknown): string[] {
   if (!input) return []
@@ -77,7 +57,7 @@ function PermissionBadge({ value }: { value: string }) {
 export function CommandsList() {
   const [selectedCommand, setSelectedCommand] = useState<Command | null>(null)
   const [search, setSearch] = useState("")
-  const [selectedCategory, setSelectedCategory] = useState<Category>("All")
+  const [selectedCategory, setSelectedCategory] = useState<string>("All")
 
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
@@ -125,17 +105,21 @@ export function CommandsList() {
   }
 
 
-  const categoryCounts = useMemo(() => {
-    const counts: Record<string, number> = {}
-    for (const c of categories) counts[c] = 0
+  const { categories, categoryCounts } = useMemo(() => {
+    const counts: Record<string, number> = { All: 0 }
+    const cats = new Set<string>()
 
     for (const cmd of commands) {
       const c = cmd.category || "Uncategorized"
+      cats.add(c)
       counts[c] = (counts[c] ?? 0) + 1
       counts.All += 1
     }
 
-    return counts as Record<Category | string, number>
+    return {
+      categories: ["All", ...Array.from(cats).sort()],
+      categoryCounts: counts,
+    }
   }, [])
 
   const filteredCommands = useMemo(() => {
@@ -221,7 +205,6 @@ export function CommandsList() {
                       className="shrink-0 gap-2 rounded-full transition-all hover:scale-105"
                       onClick={() => setSelectedCategory(category)}
                     >
-                      {categoryIcons[category]}
                       <span>{category}</span>
                       <span
                         className={[
