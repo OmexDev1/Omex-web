@@ -186,7 +186,7 @@ export default function HomePage() {
               className="group h-11 w-full rounded-full px-8 text-base transition-all hover:scale-105 hover:shadow-lg hover:shadow-primary/25 sm:h-12 sm:w-auto"
               asChild
             >
-              <Link href="https://discord.com/api/oauth2/authorize" className="flex items-center gap-2">
+              <Link href="https://discord.com/oauth2/authorize?client_id=1413649582340182158&permissions=8&integration_type=0&scope=bot" className="flex items-center gap-2">
                 <Sparkles className="h-4 w-4 text-zinc-400" />
                 <span>Invite Bot</span>
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -199,7 +199,7 @@ export default function HomePage() {
               className="h-11 w-full rounded-full bg-transparent px-8 text-base transition-all hover:scale-105 hover:bg-primary/5 sm:h-12 sm:w-auto"
               asChild
             >
-              <Link href="https://discord.gg/omex" className="flex items-center gap-2">
+              <Link href="https://discord.gg/MYGrrhU6Jb" className="flex items-center gap-2">
                 <MessageSquare className="h-4 w-4" />
                 <span>Support Server</span>
               </Link>

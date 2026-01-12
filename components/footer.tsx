@@ -46,7 +46,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="https://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID"
+                  href="https://discord.com/oauth2/authorize?client_id=1413649582340182158&permissions=8&integration_type=0&scope=bot"
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
                   Invite
@@ -62,7 +62,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="https://discord.gg/YOUR_SERVER"
+                  href="https://discord.gg/MYGrrhU6Jb"
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
                   Support Server

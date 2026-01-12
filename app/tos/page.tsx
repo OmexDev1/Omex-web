@@ -59,7 +59,7 @@ export default function TOSPage() {
 
             {/* “Button instead of 4. Omex” — I’m treating this as a prominent CTA button */}
             <Button asChild className="rounded-full">
-              <Link href="https://discord.gg/Omex" target="_blank" rel="noreferrer">
+              <Link href="https://discord.gg/MYGrrhU6Jb" target="_blank" rel="noreferrer">
                 Omex Support
               </Link>
             </Button>
@@ -268,8 +268,8 @@ export default function TOSPage() {
                       contact@Omex.live
                     </a>{" "}
                     or contact us via{" "}
-                    <Link className="text-foreground underline underline-offset-4" href="https://discord.gg/Omex">
-                      discord.gg/Omex
+                    <Link className="text-foreground underline underline-offset-4" href="https://discord.gg/MYGrrhU6Jb">
+                      https://discord.gg/MYGrrhU6Jb
                     </Link>
                     .
                   </p>

@@ -210,8 +210,8 @@ export default function PrivacyPage() {
                 <div className="mt-2 rounded-lg border border-border/40 bg-muted/20 p-4">
                   <p className="m-0">
                     Prefer Discord support? Join{" "}
-                    <Link className="text-foreground underline underline-offset-4" href="https://discord.gg/Omex">
-                      discord.gg/Omex
+                    <Link className="text-foreground underline underline-offset-4" href="https://discord.gg/MYGrrhU6Jb">
+                      https://discord.gg/MYGrrhU6Jb
                     </Link>
                     .
                   </p>

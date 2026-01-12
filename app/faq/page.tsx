@@ -102,7 +102,7 @@ export default function FAQPage() {
         <div className="mt-12 text-center">
           <p className="text-muted-foreground">
             Still have questions?{" "}
-            <a href="https://discord.gg/omex" className="text-primary hover:underline">
+            <a href="https://discord.gg/MYGrrhU6Jb" className="text-primary hover:underline">
               Join our Support Server
             </a>
           </p>
