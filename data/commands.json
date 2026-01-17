@@ -2701,5 +2701,163 @@
     "usage": ",webhook send",
     "hidden": false,
     "enabled": true
+  },
+  {
+    "name": "customize",
+    "aliases": [
+      "cust",
+      "cst"
+    ],
+    "description": "Customise Omex avatar/banner/bio for THIS server (premium only).",
+    "category": "customisable",
+    "prefix": ",",
+    "arguments": "customize <avatar|banner|bio> ...",
+    "permissions": "Customize <Avatar|Banner|Bio> ...",
+    "usage": ",customize",
+    "hidden": false,
+    "enabled": true
+  },
+  {
+    "name": "customize avatar",
+    "aliases": [
+      "av",
+      "a"
+    ],
+    "description": "Manage the Omex avatar for this server.",
+    "category": "customisable",
+    "prefix": ",",
+    "arguments": "customize avatar <set|reset> [url]",
+    "permissions": "Customize Avatar <Set|Reset> [Url]",
+    "usage": ",customize avatar",
+    "hidden": false,
+    "enabled": true
+  },
+  {
+    "name": "customize avatar reset",
+    "aliases": [
+      "r"
+    ],
+    "description": "Reset the Omex avatar for this server back to the global avatar",
+    "category": "customisable",
+    "prefix": ",",
+    "arguments": "customize avatar reset",
+    "permissions": "Customize Avatar Reset",
+    "usage": ",customize avatar reset",
+    "hidden": false,
+    "enabled": true
+  },
+  {
+    "name": "customize avatar set",
+    "aliases": [
+      "s"
+    ],
+    "description": "Set the Omex avatar for this server (attach an image or provide a direct image URL).",
+    "category": "customisable",
+    "prefix": ",",
+    "arguments": "customize avatar set [url]",
+    "permissions": "Customize Avatar Set [Url]",
+    "usage": ",customize avatar set",
+    "hidden": false,
+    "enabled": true
+  },
+  {
+    "name": "customize banner",
+    "aliases": [
+      "bn",
+      "b",
+      "br"
+    ],
+    "description": "Manage the Omex banner for this server",
+    "category": "customisable",
+    "prefix": ",",
+    "arguments": "customize banner <set|reset> [url]",
+    "permissions": "Customize Banner <Set|Reset> [Url]",
+    "usage": ",customize banner",
+    "hidden": false,
+    "enabled": true
+  },
+  {
+    "name": "customize banner reset",
+    "aliases": [
+      "r"
+    ],
+    "description": "Reset the Omex banner for this server back to the global banner",
+    "category": "customisable",
+    "prefix": ",",
+    "arguments": "customize banner reset",
+    "permissions": "Customize Banner Reset",
+    "usage": ",customize banner reset",
+    "hidden": false,
+    "enabled": true
+  },
+  {
+    "name": "customize banner set",
+    "aliases": [
+      "s"
+    ],
+    "description": "Set the Omex banner for this server (attach an image or provide a direct image URL)",
+    "category": "customisable",
+    "prefix": ",",
+    "arguments": "customize banner set [url]",
+    "permissions": "Customize Banner Set [Url]",
+    "usage": ",customize banner set",
+    "hidden": false,
+    "enabled": true
+  },
+  {
+    "name": "customize bio",
+    "aliases": [
+      "bi"
+    ],
+    "description": "Manage the Omex bio for this server (also stored in DB)",
+    "category": "customisable",
+    "prefix": ",",
+    "arguments": "customize bio <set|show|reset> [text]",
+    "permissions": "Customize Bio <Set|Show|Reset> [Text]",
+    "usage": ",customize bio",
+    "hidden": false,
+    "enabled": true
+  },
+  {
+    "name": "customize bio reset",
+    "aliases": [
+      "r"
+    ],
+    "description": "Clear this server bio text.",
+    "category": "customisable",
+    "prefix": ",",
+    "arguments": "customize bio reset",
+    "permissions": "Customize Bio Reset",
+    "usage": ",customize bio reset",
+    "hidden": false,
+    "enabled": true
+  },
+  {
+    "name": "customize bio set",
+    "aliases": [
+      "s"
+    ],
+    "description": "Set this server bio text",
+    "category": "customisable",
+    "prefix": ",",
+    "arguments": "customize bio set <text>",
+    "permissions": "Customize Bio Set <Text>",
+    "usage": ",customize bio set",
+    "hidden": false,
+    "enabled": true
+  },
+  {
+    "name": "customize bio show",
+    "aliases": [
+      "sh"
+    ],
+    "description": "Show this server configured bio text.",
+    "category": "customisable",
+    "prefix": ",",
+    "arguments": "customize bio show",
+    "permissions": "Customize Bio Show",
+    "usage": ",customize bio show",
+    "hidden": false,
+    "enabled": true
   }
 ]
