@@ -2613,7 +2613,7 @@
     "category": "statistics",
     "prefix": ",",
     "arguments": "type, channel",
-    "permissions": "Statistics Set <Type> <Channel>",
+    "permissions": "",
     "usage": ",statistics set",
     "hidden": false,
     "enabled": true
@@ -2711,7 +2711,7 @@
     "description": "Customise Omex avatar/banner/bio for THIS server (premium only).",
     "category": "customisable",
     "arguments": "customize <avatar|banner|bio> ...",
-    "permissions": "Customize <Avatar|Banner|Bio> ...",
+    "permissions": "premium Sever",
     "usage": ",customize",
     "hidden": false,
     "enabled": true
@@ -2726,7 +2726,7 @@
     "category": "customisable",
     "prefix": ",",
     "arguments": "customize avatar <set|reset> [url]",
-    "permissions": "Customize Avatar <Set|Reset> [Url]",
+    "permissions": "premium Sever",
     "usage": ",customize avatar",
     "hidden": false,
     "enabled": true
@@ -2740,7 +2740,7 @@
     "category": "customisable",
     "prefix": ",",
     "arguments": "customize avatar reset",
-    "permissions": "Customize Avatar Reset",
+    "permissions": "premium Sever",
     "usage": ",customize avatar reset",
     "hidden": false,
     "enabled": true
@@ -2754,7 +2754,7 @@
     "category": "customisable",
     "prefix": ",",
     "arguments": "customize avatar set [url]",
-    "permissions": "Customize Avatar Set [Url]",
+    "permissions": "premium Sever",
     "usage": ",customize avatar set",
     "hidden": false,
     "enabled": true
@@ -2770,7 +2770,7 @@
     "category": "customisable",
     "prefix": ",",
     "arguments": "customize banner <set|reset> [url]",
-    "permissions": "Customize Banner <Set|Reset> [Url]",
+    "permissions": "premium Sever",
     "usage": ",customize banner",
     "hidden": false,
     "enabled": true
@@ -2784,7 +2784,7 @@
     "category": "customisable",
     "prefix": ",",
     "arguments": "customize banner reset",
-    "permissions": "Customize Banner Reset",
+    "permissions": "premium Sever",
     "usage": ",customize banner reset",
     "hidden": false,
     "enabled": true
@@ -2798,7 +2798,7 @@
     "category": "customisable",
     "prefix": ",",
     "arguments": "customize banner set [url]",
-    "permissions": "Customize Banner Set [Url]",
+    "permissions": "premium Sever",
     "usage": ",customize banner set",
     "hidden": false,
     "enabled": true
@@ -2812,7 +2812,7 @@
     "category": "customisable",
     "prefix": ",",
     "arguments": "customize bio <set|show|reset> [text]",
-    "permissions": "Customize Bio <Set|Show|Reset> [Text]",
+    "permissions": "premium Sever",
     "usage": ",customize bio",
     "hidden": false,
     "enabled": true
@@ -2826,7 +2826,7 @@
     "category": "customisable",
     "prefix": ",",
     "arguments": "customize bio reset",
-    "permissions": "Customize Bio Reset",
+    "permissions": "premium Sever",
     "usage": ",customize bio reset",
     "hidden": false,
     "enabled": true
@@ -2840,7 +2840,7 @@
     "category": "customisable",
     "prefix": ",",
     "arguments": "customize bio set <text>",
-    "permissions": "Customize Bio Set <Text>",
+    "permissions": "premium Sever",
     "usage": ",customize bio set",
     "hidden": false,
     "enabled": true
@@ -2854,7 +2854,7 @@
     "category": "customisable",
     "prefix": ",",
     "arguments": "customize bio show",
-    "permissions": "Customize Bio Show",
+    "permissions": "premium Sever",
     "usage": ",customize bio show",
     "hidden": false,
     "enabled": true
